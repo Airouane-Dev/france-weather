@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from "@/components/Dashboard";
-import Statistique from "@/components/Statistique";
-import Carte from "@/components/Carte";
-import Compte from "@/components/Compte";
+import Dashboard from "@/views/Dashboard";
+import Statistique from "@/views/Statistique";
+import Carte from "@/views/Carte";
+import Compte from "@/views/Compte";
 
 Vue.use(VueRouter)
 

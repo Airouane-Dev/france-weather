@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <span id="title">
           France Weather
         </span>
@@ -18,7 +18,9 @@
           <router-link to="/compte">Compte</router-link>
         </li>
       </ul>
-    </div>
+    </div> -->
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -31,7 +33,6 @@ export default {
   }
 }
 </script>
-npm install -D css-loader
 <style lang="scss" scoped>
   @import './stylesheet/main.scss';
 </style>
