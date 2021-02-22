@@ -3,32 +3,57 @@
 @tailwind utilities;
 
 #app {
+  display: grid;
+  grid-template-columns: 224px 1fr 1fr;
 
   #nav {
+    max-width: 224px;
+    max-height: 100vh;
 
-    #title {
-      display: inline-table;
-      text-align: center;
-
-      width: 224px;
-      height: 131px;
-
-      box-shadow: 0px 4px 13px rgba(202, 202, 202, 0.25);
-    }
+    border-right: 2px solid rgba(211, 211, 211, 0.5);
 
     ul {
       list-style: none;
+      text-align: center;
 
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #nav-brand {
+      width: auto;
+      padding: 30% 0% 30% 0%;
+
+      box-shadow: 0px 4px 13px rgba(202, 202, 202, 0.25);
+
+    }
+
+    #nav-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      width: 224px;
+      height: 80vh;
       margin: 0;
       padding: 0;
-      width: 224px;
-      height: 100vh;
 
       li {
         display: block;
       }
+
+      #cercle {
+        width: 60px;
+        height: 60px;
+        border-radius: 60%;
+        background: gray;
+      }
     }
   }
 
-
+  #block-card {
+    max-width: 80vh;
+    max-height: 100vh;
+  }
 }

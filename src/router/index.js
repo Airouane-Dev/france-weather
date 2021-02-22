@@ -15,7 +15,7 @@ const routes = [
     },
     {
         path: '/statistique',
-        name: 'Statisitque',
+        name: 'Statistique',
         component: Statistique
     },
     {

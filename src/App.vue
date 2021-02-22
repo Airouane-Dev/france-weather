@@ -1,26 +1,28 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <span id="title">
-          France Weather
-        </span>
-      <ul>
+    <div id="nav">
+      <ul id="nav-brand">
+        <li> France Weather   </li>
+      </ul>
+      <ul id="nav-menu">
         <li>
           <router-link to="/">Dashboard</router-link>
         </li>
         <li>
-          <router-link to="/carte">Carte</router-link>
+          <router-link to="/carte">Map</router-link>
         </li>
         <li>
-          <router-link to="/statistique">Statistique</router-link>
+          <router-link to="/statistique">Analitics</router-link>
         </li>
-        <li>
-          <router-link to="/compte">Compte</router-link>
+        <li id="cercle">
+          <router-link to="/compte"></router-link>
         </li>
       </ul>
-    </div> -->
+    </div>
+    <div id="block-card">
+      <router-view></router-view>
+    </div>
 
-    <router-view></router-view>
   </div>
 </template>
 
