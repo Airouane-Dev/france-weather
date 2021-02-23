@@ -6,6 +6,7 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 require('@/stylesheet/main.scss');
+
 library.add(faUserSecret)
 
 Vue.component('fa', FontAwesomeIcon)
