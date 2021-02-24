@@ -1,21 +1,26 @@
 <template>
-  <div class="navCard">
-    <div class="navInput">
-      <i class="fas fa-search"></i>
-      <input type="text" placeholder="Ville"/>
-    </div>
-    <div class="list-card">
-      <div v-for="card in ville" :key="card">
-        <CardOverView
-            :ville="card"
-            :iconMeteo="card.iconMeteo"
-            :temperature="card.temperature"
-            :humidite="card.humidite"/>
+  <div class="dashboard">
+    <div class="navCard">
+      <div class="navInput">
+        <fa icon="user-secret"/>
+        <input type="text" placeholder="Ville"/>
+      </div>
+      <div v-for="card in cardCity" :key="card">
+        <CardOverView 
+          :ville="card.name" 
+          :iconMeteo="card.weather.icon" 
+          :temperature="card.main.temp" 
+          :humidite="card.main.humidity"
+          v-on:click.native="show(card.id)"/>
+      </div>
+
+      <div class="butttonAdd">
+        <button>+</button>
       </div>
     </div>
 
-    <div class="butttonAdd">
-      <button v-on:click="show()">+</button>
+    <div class="contentDashboard" v-if="villeSel">
+      <p>ZAE</p>
     </div>
   </div>
 </template>
@@ -23,6 +28,7 @@
 <script>
 import CardOverView from '../components/dashboard/CardOverView'
 import { db } from '../config/firebase'
+import axios from 'axios';
 
 export default {
 name: "Dashboard",
@@ -31,28 +37,41 @@ components: {
 },
 data() {
   return {
-    /*cardMeteo: {
-      card1: {
-        ville: "Nantes",
-        iconMeteo: "user-secret",
-        temperature: "20",
-        humidite: "14"
-      },
-      card2: {
-        ville: "Bordeaux",
-        iconMeteo: "user-secret",
-        temperature: "25",
-        humidite: "10"
-      }
-    },*/
-    ville: db.collection('villeUser').doc("O7ivfQMl0LreHfZspxuv")
-      .get().then(snapshot => {
-          if (!snapshot.exists) return;
-          this.ville = snapshot.data().ville
-      })
+      cardCity: [],
+      errors:[],
+      villeSel: {}
   }
 },
-methods: { }
+created() {
+  db.collection('villeUser').doc("O7ivfQMl0LreHfZspxuv")
+    .get().then(snapshot => {
+        if (!snapshot.exists) return;
+        for(let i = 0; i < snapshot.data().ville.length; i ++) {
+          this.getCardVille(snapshot.data().ville[i]);
+        }
+    })
+},
+methods: {
+  getCardVille(ville) {
+    axios.get('https://api.openweathermap.org/data/2.5/weather?q='+ville+'&appid=9e02461cb91f451649d7021a718a4348')
+      .then(response => {
+        this.cardCity.push(response.data)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })      
+  },
+  show: function(villeId) {
+    axios.get('https://api.openweathermap.org/data/2.5/weather?id='+villeId+'&appid=9e02461cb91f451649d7021a718a4348')
+      .then(response => {
+        this.villeSel = response.data
+        console.log(this.villeSel)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })    
+  }
+}
 }
 </script>
 
