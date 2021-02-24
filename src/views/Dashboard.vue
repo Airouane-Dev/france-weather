@@ -77,10 +77,10 @@ methods: {
 
 <style scoped lang="scss">
 .navCard {
-  width: 60%;
-  height: 100%;
-  background-clip: rgba(238, 238, 238, 0.25);
-  border-right: 2px solid rgba(211, 211, 211, 0.5);
+  padding-top: 10%;
+  max-width: 100%;
+  max-height: 100vh;
+  background-color: rgba(238, 238, 238, 0.25);
   position: relative;
 }
 
@@ -90,6 +90,10 @@ methods: {
   background: rgba(245, 245, 245, 0.8);
   border: 1px solid #E7E7E7;
   border-radius: 11px;
+
+  i {
+    padding: 0% 3% 0% 3%;
+  }
 
   input {
     border: none;

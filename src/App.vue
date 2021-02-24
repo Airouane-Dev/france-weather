@@ -1,17 +1,20 @@
 <template>
   <div id="app">
+    <ul id="brand">
+      <li> France Weather   </li>
+    </ul>
     <div id="nav">
-      <ul id="nav-brand">
-        <li> France Weather   </li>
-      </ul>
       <ul id="nav-menu">
         <li>
+          <i class="fas fa-home"></i> <br>
           <router-link to="/">Dashboard</router-link>
         </li>
         <li>
+          <i class="far fa-map"></i> <br>
           <router-link to="/carte">Map</router-link>
         </li>
         <li>
+          <i class="far fa-chart-bar"></i> <br>
           <router-link to="/statistique">Analitics</router-link>
         </li>
         <li id="cercle">
@@ -35,6 +38,4 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-  @import './stylesheet/main.scss';
-</style>
+
