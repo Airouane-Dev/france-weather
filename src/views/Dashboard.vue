@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="navCard">
       <div class="navInput">
-        <fa icon="user-secret"/>
+        <i class="fas fa-search"></i>
         <input type="text" placeholder="Ville"/>
       </div>
       <div v-for="card in cardCity" :key="card">
