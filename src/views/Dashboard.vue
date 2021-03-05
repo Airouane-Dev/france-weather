@@ -102,6 +102,10 @@ methods: {
   border: 1px solid #E7E7E7;
   border-radius: 11px;
 
+  i {
+    padding: 0% 3% 0% 3%;
+  }
+
   input {
     border: none;
     background: none;
