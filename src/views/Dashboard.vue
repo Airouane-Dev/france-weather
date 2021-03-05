@@ -15,31 +15,34 @@
       </div>
 
       <div class="butttonAdd">
-        <button>+</button>
+        <button v-on:click="show(2990968)">+</button>
       </div>
     </div>
 
-    <div class="contentDashboard" v-if="villeSel">
-      <p>ZAE</p>
+    <div class="contentDashboard" v-if="villeSelected">
+      <Content :ville="villeSelected"/>
     </div>
   </div>
 </template>
 
 <script>
 import CardOverView from '../components/dashboard/CardOverView'
+import Content from '../components/dashboard/Content'
+
 import { db } from '../config/firebase'
 import axios from 'axios';
 
 export default {
 name: "Dashboard",
 components: {
-  CardOverView
+  CardOverView,
+  Content
 },
 data() {
   return {
       cardCity: [],
       errors:[],
-      villeSel: {}
+      villeSelected: null
   }
 },
 created() {
@@ -53,7 +56,7 @@ created() {
 },
 methods: {
   getCardVille(ville) {
-    axios.get('https://api.openweathermap.org/data/2.5/weather?q='+ville+'&appid=9e02461cb91f451649d7021a718a4348')
+    axios.get('https://api.openweathermap.org/data/2.5/weather?q='+ville+'&units=metric&appid=9e02461cb91f451649d7021a718a4348')
       .then(response => {
         this.cardCity.push(response.data)
       })
@@ -62,10 +65,10 @@ methods: {
       })      
   },
   show: function(villeId) {
-    axios.get('https://api.openweathermap.org/data/2.5/weather?id='+villeId+'&appid=9e02461cb91f451649d7021a718a4348')
+    axios.get('https://api.openweathermap.org/data/2.5/weather?id='+villeId+'&units=metric&appid=9e02461cb91f451649d7021a718a4348')
       .then(response => {
-        this.villeSel = response.data
-        console.log(this.villeSel)
+        this.villeSelected = response.data
+        console.log(response.data)
       })
       .catch(e => {
         this.errors.push(e)
@@ -76,12 +79,20 @@ methods: {
 </script>
 
 <style scoped lang="scss">
+.dashboard {
+  display: grid;
+  grid-template-columns: 40% 70%;
+}
+
 .navCard {
-  width: 60%;
-  height: 100%;
   background-clip: rgba(238, 238, 238, 0.25);
   border-right: 2px solid rgba(211, 211, 211, 0.5);
+  grid-column: 1;
   position: relative;
+}
+
+.contentDashboard {
+  grid-column: 2;
 }
 
 .navInput {
@@ -114,4 +125,5 @@ methods: {
     font-size: 40px;
   }
 }
+
 </style>
