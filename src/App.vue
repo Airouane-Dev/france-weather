@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ul id="brand">
-      <li> France Weather   </li>
+      <li> France Weather </li>
     </ul>
     <div id="nav">
       <ul id="nav-menu">

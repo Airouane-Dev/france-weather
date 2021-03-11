@@ -15,7 +15,7 @@
       </div>
 
       <div class="butttonAdd">
-        <button v-on:click="show(2990968)">+</button>
+        <button>+</button>
       </div>
     </div>
 
@@ -68,7 +68,6 @@ methods: {
     axios.get('https://api.openweathermap.org/data/2.5/weather?id='+villeId+'&units=metric&appid=9e02461cb91f451649d7021a718a4348')
       .then(response => {
         this.villeSelected = response.data
-        console.log(response.data)
       })
       .catch(e => {
         this.errors.push(e)

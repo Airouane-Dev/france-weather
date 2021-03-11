@@ -5,12 +5,12 @@ $font-family: "Poppins", sans-serif;
 
 #app {
   display: grid;
-  grid-template-columns: 224px 385px 3fr;
+  grid-template-columns: 224px 5fr;
   grid-template-rows: 131px 100vh;
   font-family: $font-family;
 
   #brand {
-    grid-column: 1 / 3;
+    grid-column: 1;
     grid-row: 1;
     list-style: none;
     text-align: center;
@@ -69,7 +69,7 @@ $font-family: "Poppins", sans-serif;
 
   #block-card {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1;
     max-width: 80vh;
     max-height: 100vh;
 
